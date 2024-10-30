@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prueba XSS</title>
+</head>
+<body>
+    <h1>Prueba de XSS</h1>
+    <p>Ingresa un texto y presiona el botón:</p>
+
+    <form onsubmit="return false;">
+        <label for="input">Texto:</label>
+        <input type="text" id="input" placeholder="Escribe aquí">
+        <button onclick="mostrarTexto()">Mostrar</button>
+    </form>
+
+    <div id="resultado"></div>
+
+    <script>
+        function mostrarTexto() {
+            const input = document.getElementById('input').value;
+            document.getElementById('resultado').innerHTML = input;  // Vulnerabilidad XSS
+        }
+    </script>
+</body>
+</html>
